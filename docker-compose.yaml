@@ -1,0 +1,44 @@
+version: '3.1'
+services:
+  zookeeper:
+    image: bitnami/zookeeper
+    volumes:
+      - zookeeper:/bitnami/zookeeper
+    environment:
+      ZOO_SERVER_ID: 1
+      ALLOW_ANONYMOUS_LOGIN: "yes"
+
+  kafka:
+    image: bitnami/kafka
+    volumes:
+      - kafka:/bitnami/kafka
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_CFG_ZOOKEEPER_CONNECT: zookeeper:2181
+      ALLOW_PLAINTEXT_LISTENER: "yes"
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui
+    ports:
+      - "8080:8080"
+    depends_on:
+      - kafka
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+
+  app:
+    build: ./docker/roadrunner
+    entrypoint: /docker-entrypoint.sh
+    working_dir: /srv
+    volumes:
+      - ./src/app:/srv
+      - ./docker/roadrunner/entrypoint.sh:/docker-entrypoint.sh:ro
+    depends_on:
+      - kafka
+
+volumes:
+  kafka: ~
+  zookeeper: ~

@@ -1,0 +1,27 @@
+version: '2.7'
+
+rpc:
+  listen: tcp://0.0.0.0:6001
+
+server:
+  command: "php app.php"
+  relay: pipes
+
+kafka:
+  addrs: kafka:9092
+
+jobs:
+  pool:
+    command: "php app.php"
+    num_workers: 1
+    supervisor:
+      max_worker_memory: 100
+  consume:
+    - kafka_test
+  pipelines:
+    kafka_test:
+      driver: kafka
+      config:
+        topic: "kafka_test"
+        brokers: [ kafka:9092 ]
+        auto_create_topics_enable: true
