@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Command;
 
-use App\Job\KafkaJob;
+use App\Jobs\KafkaJob;
 use Spiral\Console\Command;
 use Spiral\Queue\Options;
 use Spiral\Queue\QueueManager;

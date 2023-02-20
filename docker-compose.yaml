@@ -38,6 +38,8 @@ services:
       - ./docker/roadrunner/entrypoint.sh:/docker-entrypoint.sh:ro
     depends_on:
       - kafka
+    environment:
+      PHP_IDE_CONFIG: serverName=spiral-app
 
 volumes:
   kafka: ~

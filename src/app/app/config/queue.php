@@ -2,12 +2,7 @@
 
 declare(strict_types=1);
 
-use Spiral\Queue\Driver\SyncDriver;
 use Spiral\RoadRunner\Jobs\Queue\KafkaCreateInfo;
-use Spiral\RoadRunner\Jobs\Queue\MemoryCreateInfo;
-use Spiral\RoadRunner\Jobs\Queue\AMQPCreateInfo;
-use Spiral\RoadRunner\Jobs\Queue\BeanstalkCreateInfo;
-use Spiral\RoadRunner\Jobs\Queue\SQSCreateInfo;
 use Spiral\RoadRunnerBridge\Queue\Queue;
 
 return [
@@ -27,9 +22,16 @@ return [
                 ],
             ],
         ],
+
+        'kafka' => [
+            'driver' => 'kafka',
+            'pipeline' => 'kafka_test',
+            'topic' => 'kafka_test',
+        ],
     ],
 
     'driverAliases' => [
         'roadrunner' => Queue::class,
+        'kafka' => \App\Jobs\KafkaDriver::class,
     ],
 ];

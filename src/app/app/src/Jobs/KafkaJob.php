@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Job;
+namespace App\Jobs;
 
 use Spiral\Queue\JobHandler;
 
