@@ -29,3 +29,6 @@ RUN wget -q "https://github.com/roadrunner-server/roadrunner/releases/download/v
     && mv roadrunner-${ROADRUNNER_VERSION}-linux-amd64/rr /usr/local/bin/rr \
     && chmod +x /usr/local/bin/rr \
     && rm -rf roadrunner-${ROADRUNNER_VERSION}-linux-amd64*
+
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
