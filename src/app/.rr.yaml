@@ -25,3 +25,17 @@ jobs:
         topic: "kafka_test"
         brokers: [ kafka:9092 ]
         auto_create_topics_enable: true
+
+reload:
+  interval: 1s
+  patterns: [ ".php" ]
+
+  services:
+    http:
+      dirs: [ "./app" ]
+      recursive: true
+      patterns: [ ".php" ]
+    jobs:
+      dirs: [ "./app" ]
+      recursive: true
+      patterns: [ ".php" ]

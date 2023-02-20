@@ -4,25 +4,27 @@ declare(strict_types=1);
 
 namespace App\Command;
 
-use App\Job\KafkaJob;
+use App\Jobs\KafkaJob;
 use Spiral\Console\Command;
-use Spiral\Queue\Options;
-use Spiral\Queue\QueueManager;
+use Spiral\RoadRunner\Jobs\JobsInterface;
+use Spiral\RoadRunner\Jobs\KafkaOptions;
 
 class KafkaPushCommand extends Command
 {
-    public const NAME        = 'kafka-push';
+    public const NAME = 'kafka-push';
 
-    protected function perform(QueueManager $queueManager): void
+    protected function perform(JobsInterface $jobs): void
     {
-        $queueManager->getConnection('roadrunner')->push(
+        $queue = $jobs->connect('kafka_test', new KafkaOptions('kafka_test'));
+        //var_dump($queue);
+
+        $queue->push(
             KafkaJob::class,
             [
                 'ts' => time(),
                 'foo' => 'bar',
                 'sleep' => rand(1, 100)
             ],
-            Options::onQueue('kafka_test')
         );
     }
 }
