@@ -28,23 +28,29 @@ class KafkaPullCommand extends Command
             'partition',
             0
         ],
+        [
+            'group-id',
+            'g',
+            InputOption::VALUE_REQUIRED,
+            'group',
+            'my_group_id'
+        ],
     ];
 
     protected function perform(InputInterface $input, OutputInterface $output): void
     {
-        $partition = 0;
-        $topicName = 'my_topic_name';
+        $partition = $input->getOption('partition');
 
         // configure
         $conf = new \RdKafka\Conf();
-        $conf->set('group.id', 'my_customer_group_id');
+        $conf->set('group.id', $input->getOption('group'));
         $conf->set('metadata.broker.list', 'kafka'); //docker container name
         $conf->set('auto.offset.reset', 'earliest');
         $conf->set('enable.partition.eof', 'true');
 
         $consumer = new \RdKafka\Consumer($conf);
 
-        $topic = $consumer->newTopic($topicName);
+        $topic = $consumer->newTopic($input->getOption('topic'));
 
         $topic->consumeStart($partition, RD_KAFKA_OFFSET_STORED);
         $message = $topic->consume($partition, 10_000);
