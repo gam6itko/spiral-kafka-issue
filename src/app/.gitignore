@@ -5,4 +5,3 @@ rr*
 spiral*
 .phpunit.result.cache
 .deptrac.cache
-composer.lock

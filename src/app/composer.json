@@ -17,6 +17,7 @@
         "spiral/roadrunner-bridge": "^2.1"
     },
     "require-dev": {
+        "kwn/php-rdkafka-stubs": "^2.2",
         "symfony/var-dumper": "^6.1"
     },
     "autoload": {

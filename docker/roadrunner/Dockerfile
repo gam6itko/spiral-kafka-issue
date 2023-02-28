@@ -1,6 +1,6 @@
 FROM php:8.1
 
-ENV ROADRUNNER_VERSION=2.12.3
+ENV ROADRUNNER_VERSION="2023.1.0-alpha.2"
 
 RUN apt-get update \
     && apt-get install -qqy \
@@ -30,5 +30,4 @@ RUN wget -q "https://github.com/roadrunner-server/roadrunner/releases/download/v
     && chmod +x /usr/local/bin/rr \
     && rm -rf roadrunner-${ROADRUNNER_VERSION}-linux-amd64*
 
-RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug
+#RUN pecl install xdebug && docker-php-ext-enable xdebug
