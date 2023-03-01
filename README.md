@@ -8,6 +8,10 @@ docker-compose up -d
 
 Kafka-ui at http://localhost:8080/
 
+xDebug script:
+```shell
+php -d xdebug.mode=debug -d xdebug.start_with_request=1 -d xdebug.client_host=172.18.0.1 app.php rr:kafka-push
+```
 
 ## rr v2.12.3
 
