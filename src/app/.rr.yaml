@@ -22,8 +22,8 @@ jobs:
       driver: kafka
       config:
         priority: 1
-        topic: "kafka_test"
-        brokers: [ kafka:9092 ]
+#        topic: "kafka_test"
+#        brokers: [ kafka:9092 ]
         auto_create_topics_enable: true
         producer_options:
           max_message_bytes: 1000
