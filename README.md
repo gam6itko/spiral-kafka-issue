@@ -18,7 +18,7 @@ php -d xdebug.mode=debug -d xdebug.start_with_request=1 -d xdebug.client_host=17
 ### bug 1
 
 ```shell
-docker-compose exec app  php app.php kafka-push
+docker-compose exec app  php app.php rr:kafka-push
 ```
 
 command output

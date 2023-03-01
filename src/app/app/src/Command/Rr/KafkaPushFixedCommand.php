@@ -20,7 +20,7 @@ class KafkaPushFixedCommand extends Command
             [
                 'ts' => time(),
                 'foo' => 'bar',
-                'sleep' => rand(1, 100)
+                'sleep' => rand(1, 10)
             ],
         );
     }

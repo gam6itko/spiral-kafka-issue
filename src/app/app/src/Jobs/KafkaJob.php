@@ -11,10 +11,12 @@ class KafkaJob extends JobHandler
 {
     use LoggerTrait;
 
-    public function invoke(array $payload): void
+    public function invoke(string $id, array $payload): void
     {
-        var_dump($payload);
+        $time = microtime(true);
+        echo "start: $id. {$payload['i']}. payload: " . json_encode($payload);
         $this->getLogger()->info(KafkaJob::class, $payload);
         sleep($payload['sleep'] ?? 1);
+        echo "stop : $id. {$payload['i']}. time: " . (microtime(true) - $time);
     }
 }

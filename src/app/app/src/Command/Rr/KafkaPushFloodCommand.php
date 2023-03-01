@@ -41,7 +41,7 @@ class KafkaPushFloodCommand extends Command
                     'i' => $i,
                     'ts' => time(),
                     'foo' => 'bar',
-                    'sleep' => rand(1, 60)
+                    'sleep' => rand(1, 10)
                 ],
             );
         }
