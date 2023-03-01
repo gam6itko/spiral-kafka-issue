@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Command;
+namespace App\Command\Rr;
 
 use App\Jobs\KafkaJob;
 use Spiral\Console\Command;
@@ -14,12 +14,13 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class KafkaPushFloodCommand extends Command
 {
-    public const NAME = 'kafka-push-flood';
+    public const NAME = 'rr:kafka-push-flood';
+
     protected const ARGUMENTS = [
         [
             'count',
             InputArgument::OPTIONAL,
-            'For certain exchanger complaint id',
+            'Produce message count',
             '1'
         ],
     ];

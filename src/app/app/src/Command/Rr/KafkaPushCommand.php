@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Command;
+namespace App\Command\Rr;
 
 use App\Jobs\KafkaJob;
 use Spiral\Console\Command;
@@ -11,7 +11,7 @@ use Spiral\Queue\QueueManager;
 
 class KafkaPushCommand extends Command
 {
-    public const NAME        = 'kafka-push';
+    public const NAME        = 'rr:kafka-push';
 
     protected function perform(QueueManager $queueManager): void
     {

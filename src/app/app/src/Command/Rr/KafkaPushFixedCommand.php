@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Command;
+namespace App\Command\Rr;
 
 use App\Jobs\KafkaJob;
 use Spiral\Console\Command;
@@ -10,7 +10,7 @@ use Spiral\Queue\QueueConnectionProviderInterface;
 
 class KafkaPushFixedCommand extends Command
 {
-    public const NAME = 'kafka-push-fixed';
+    public const NAME = 'rr:kafka-push-fixed';
 
     protected function perform(QueueConnectionProviderInterface $provider): void
     {
