@@ -29,7 +29,7 @@ class KafkaPullCommand extends Command
             0
         ],
         [
-            'group-id',
+            'group',
             'g',
             InputOption::VALUE_REQUIRED,
             'group',
