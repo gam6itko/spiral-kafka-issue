@@ -6,7 +6,12 @@
 docker-compose up -d
 ```
 
-## bug
+Kafka-ui at http://localhost:8080/
+
+
+## rr v2.12.3
+
+### bug 1
 
 ```shell
 docker-compose exec app  php app.php kafka-push
@@ -37,7 +42,7 @@ rr logs
 ```
 
 
-## bug 2
+### bug 2
 
 ```shell
 docker-compose exec app  php app.php kafka-push-flood 1000
