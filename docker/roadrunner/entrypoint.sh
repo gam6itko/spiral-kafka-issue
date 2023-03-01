@@ -7,4 +7,4 @@ composer install
 
 php app.php cache:clean -v
 
-rr serve -d
+rr serve
